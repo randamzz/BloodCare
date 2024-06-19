@@ -1,0 +1,143 @@
+import React, { useState } from "react";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { Modal, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "../../Styles/counter.css";
+const Login = ({ show, onHide }) => {
+  //on cree les var qu on aura besoin
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); //si il y a error dans login
+
+  const navigate = useNavigate(); // pour rederiction
+
+  //lorsque user clique sur submit
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // pour recup les val dans input
+    const user = {
+      email: email,
+      password: password,
+    };
+    try {
+      const { data } = await axios.post("http://localhost:8000/token/", user); // use api django de login
+      Cookies.set("access_token", data.access);
+      Cookies.set("refresh_token", data.refresh);
+      // recup info user par token d acces
+      const response = await axios.get("http://localhost:8000/user/profile/", {
+        headers: {
+          Authorization: `Bearer ${data.access}`, // Inclure token dans entet requete --> securite
+        },
+      });
+
+      const userData = response.data; // Les donnees recup de api django
+      Cookies.set("user_type", userData.user_type);
+
+      window.location.reload();
+      onHide();
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 401) {
+          setErrorMessage("Invalid email or password.");
+        } else {
+          setErrorMessage("An error occurred. Please try again later.");
+        }
+      } else {
+        setErrorMessage(
+          "Network error. Please check your internet connection."
+        );
+      }
+    }
+  };
+
+  return (
+    <Modal show={show} onHide={onHide} centered>
+      <Modal.Body className="text-center">
+        <center>
+          <img
+            className="align-self-start me-3"
+            src="/img/BloodCare.png"
+            alt=""
+            style={{ maxWidth: "200px" }}
+          />{" "}
+        </center>
+        <h1>Sign in to your account</h1>
+        <br />
+        <center>
+          {errorMessage && (
+            <div className="alert alert-danger" role="alert">
+              {errorMessage}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} style={{ width: "90%" }}>
+            <div className="form-group">
+              <input
+                className="form-control  text-center rounded-5 "
+                placeholder="Enter Email"
+                name="email"
+                type="email"
+                value={email}
+                required
+                onChange={(e) => setEmail(e.target.value)}
+                style={{ padding: "10px", margin: "0 auto", width: "100%" }}
+              />
+            </div>
+            <br />
+
+            <div className="form-group">
+              <input
+                name="password"
+                type="password"
+                className="form-control  text-center rounded-5"
+                placeholder="Enter password"
+                value={password}
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                style={{ padding: "10px", margin: "0 auto", width: "100%" }}
+              />
+            </div>
+            <br />
+
+            <div className="form-group d-flex justify-content-between mb-4">
+              <div className="form-check">
+                <input
+                  type="checkbox"
+                  className="form-check-input rounded-5"
+                  id="rememberMe"
+                />
+                <label className="form-check-label" htmlFor="rememberMe">
+                  Remember me
+                </label>
+              </div>
+              <a href="#" className="ml-auto">
+                Forgot your password?
+              </a>
+            </div>
+            <br />
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Button
+                variant="danger"
+                type="submit"
+                className="group rounded-5 relative flex justify-center bg-danger"
+                style={{
+                  width: "329px",
+                  margin: "0 auto",
+                  backgroundColor: "#C41E3A",
+                }}
+              >
+                <i className="bi bi-lock-fill"></i>
+                Login
+              </Button>
+            </div>
+          </form>
+        </center>
+        <br /> <br />
+      </Modal.Body>
+    </Modal>
+  );
+};
+
+export default Login;

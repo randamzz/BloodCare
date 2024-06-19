@@ -1,0 +1,143 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #333;
+  z-index: 1000;
+}
+
+.events-container {
+  padding-top: 100px;
+}
+
+.events-title {
+  margin: 20px 0;
+  font-weight: 700;
+  font-size: 2em;
+  text-align: center;
+  color: darkred;
+  text-transform: uppercase;
+}
+
+.black-text {
+  color: black;
+}
+
+.dark-red-text {
+  color: darkred;
+}
+
+.card {
+  display: inline-block;
+  position: relative;
+  width: 320px;
+  height: 320px; /* Adjust the height as needed for all cards */
+  box-shadow: 0 10px 20px rgba(132, 15, 15, 0.388);
+  padding: 32px;
+  overflow: visible;
+  border-radius: 30px;
+  transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
+  margin: 10px;
+  vertical-align: top;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  color: #e8e8e8;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.content .heading {
+  font-weight: 750;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.content .para {
+  line-height: 1.5;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(-45deg, rgb(152, 14, 14) 0%, #8a0040 100%);
+  z-index: -1;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card:hover::before {
+  width: 100%;
+}
+
+.card:hover {
+  box-shadow: darkorange;
+}
+
+.button {
+  height: 50px;
+  width: 150px;
+  border: 0.2px solid darkred;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 0.5px 0.5px 150px #252525;
+}
+
+.type1::after {
+  content: "Thanks!";
+  height: 50px;
+  width: 150px;
+  background-color: darkred;
+  color: #fff;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translateY(50px);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.type1::before {
+  content: "Participate!";
+  height: 50px;
+  width: 150px;
+  background-color: #fff;
+  color: darkred;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translateY(0px) scale(1.2);
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid darkred;
+}
+
+.type1:hover::after {
+  transform: translateY(0) scale(1.2);
+}
+
+.type1:hover::before {
+  transform: translateY(-50px) scale(0) rotate(120deg);
+}

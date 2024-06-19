@@ -1,0 +1,54 @@
+/* Centrer le contenu et prendre toute la largeur */
+.container-fluid {
+  width: 100%;
+  padding: 0 15px;
+}
+
+/* Centrer le bouton */
+.d-flex.justify-content-center {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Agrandir le tableau pour qu'il prenne toute la largeur de la page */
+.table-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+  padding: 15px;
+  text-align: center;
+}
+
+.table thead {
+  
+  color: white;
+}
+
+/* Boutons à droite */
+.col-md-3 .btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Alignement vertical au milieu */
+.row.align-items-center {
+  align-items: center;
+}
+
+.col-md-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrer les boutons verticalement */
+  padding-top: 85px; /* Supprimer le padding top */
+}

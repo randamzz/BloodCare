@@ -1,0 +1,24 @@
+.custom-popup {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-popup h3 {
+  margin-top: 0;
+}
+
+.custom-popup button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.custom-popup button:hover {
+  background-color: #0056b3;
+}
