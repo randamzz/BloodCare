@@ -7,7 +7,7 @@ class Event(models.Model):
     association_or_hospital = models.CharField(max_length=255)  
     date_and_hour = models.DateTimeField()
     participants = models.PositiveIntegerField(default=0)
-    ticket_generated = models.BooleanField(default=False) #a sup bidon fa2iDA
+    participants_emails = models.TextField(blank=True, default="")
 
     def __str__(self):
         return self.eventname
