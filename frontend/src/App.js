@@ -13,6 +13,7 @@ import EventDetailsPage from "./component/Event/EventDetailsPage";
 import EventMain from "./component/Event/EventMain";
 import BloodList from "./component/Hospital/bloodList"; 
 import { Navigation } from "./Layout/navigations";
+import Dashboard from "./dashbord/Dashboard";
 
 import ListBloodHistory from "./component/Hospital/listbloodhistory";
 
@@ -35,7 +36,12 @@ const App = () => {
         <Route path="/Event/events/:eventId/" element={<EventDetailsPage />} />
         <Route path="/add_events" element={<EventMain />} />
         <Route path="/hospitals/list_blood" element={<BloodList />} />
-        <Route path="/hospitals/list_blood_history" element={<ListBloodHistory />} />
+        <Route path="/dashbord" element={<Dashboard />} />
+
+        <Route
+          path="/hospitals/list_blood_history"
+          element={<ListBloodHistory />}
+        />
       </Routes>
     </Router>
   );

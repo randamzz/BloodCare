@@ -33,7 +33,9 @@ const Login = ({ show, onHide }) => {
       });
 
       const userData = response.data; // Les donnees recup de api django
+      console.log(response.data);
       Cookies.set("user_type", userData.user_type);
+      Cookies.set("user_email", userData.email);
 
       window.location.reload();
       onHide();

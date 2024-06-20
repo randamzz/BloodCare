@@ -36,13 +36,11 @@ const BloodList = () => {
     fetchBloodList();
   }, []);
 
-  // Fonction pour ouvrir le modal de mise à jour
   const handleUpdateModalOpen = (blood) => {
     setShowUpdateModal(true);
     setBloodToUpdate({ id: blood.id, quantity_before: blood.quantity_ml });
   };
 
-  // Fonction pour fermer le modal de mise à jour
   const handleUpdateModalClose = () => {
     setShowUpdateModal(false);
     setBloodToUpdate({ id: null, quantity_before: "" });
