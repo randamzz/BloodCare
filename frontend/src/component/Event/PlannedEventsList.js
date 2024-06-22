@@ -58,7 +58,11 @@ const PlannedEventsList = () => {
         <div className="col-md-6">
           <div className="events-list">
             {events.map((event) => (
+<<<<<<< HEAD
               <div key={event.id} className="card cardy m-4">
+=======
+              <div key={event.id} className="card m-4">
+>>>>>>> 57ef3ddab8c4e5d03dcd665133bcb6be392a637f
                 <div className="content">
                   <p className="heading">{event.eventname}</p>
                   <p className="para">Location: {event.location}</p>
