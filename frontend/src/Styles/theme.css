@@ -378,6 +378,7 @@
 .navbar.sticky-top {
   top: -100px;
   transition: .5s;
+  position: fixed;
 }
 
 .navbar .navbar-nav .nav-link {
@@ -825,7 +826,6 @@
 
 
 .banner {
-  background: url('C:\Users\hp\Desktop\DDS3\frontend\public\img\bann.png') center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   position: relative; /* Ensure the banner is not fixed in place, allowing the content to scroll */

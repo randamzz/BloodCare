@@ -6,7 +6,7 @@ const Welcome = () => {
     <div className="container-fluid px-0 mb-5">
       <Carousel id="header-carousel" controls={true} indicators={false}>
         <Carousel.Item className="active bg-white">
-          <img className="w-100" src="\img\Design sans titre.png" alt="First slide" />
+          <img className="w-100" src="\img\BGHOME.png" alt="First slide" />
           
         </Carousel.Item>
         

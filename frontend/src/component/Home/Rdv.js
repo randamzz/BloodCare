@@ -19,9 +19,9 @@ const Rdv = () => {
         </div>
         <div className="row gy-5 gx-4">
           <div className="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div className="service-item d-flex h-100">
+            <div className="service-item d-flex h-100" >
              
-              <div className="service-text p-5 pt-0">
+              <div className="service-text p-5 pt-0"style={{ backgroundColor: `#54a8b91c` }}>
                 <div className="service-icon">
                   <img className="img-fluid rounded-circle" src="\img\1.png" alt="" />
                 </div>
@@ -36,7 +36,7 @@ const Rdv = () => {
           <div className="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.3s">
             <div className="service-item d-flex h-100">
              
-              <div className="service-text p-5 pt-0">
+              <div className="service-text p-5 pt-0"style={{ backgroundColor: `#54a8b91c` }}>
                 <div className="service-icon">
                   <img className="img-fluid rounded-circle" src="\img\2.png" alt="" />
                 </div>
@@ -51,7 +51,7 @@ const Rdv = () => {
           <div className="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.5s">
             <div className="service-item d-flex h-100">
               
-              <div className="service-text p-5 pt-0">
+              <div className="service-text p-5 pt-0"style={{ backgroundColor: `#54a8b91c` }}>
                 <div className="service-icon">
                   <img className="img-fluid rounded-circle" src="\img\3.png" alt="" />
                 </div>

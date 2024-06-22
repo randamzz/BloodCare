@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Cookies from "js-cookie";
-import Register from "../component/Authentification/Register";
-import Login from "../component/Authentification/Login";
 import { Nav } from "react-bootstrap";
+import Login from "../component/Authentification/Login";
+import Register from "../component/Authentification/Register";
 import Chatbot from "../component/Chatbot/Chatbot";
 import { CitizenNavigation } from "./citizenNavigation";
-import "../Styles/theme.css";
 import { AssociationNavigation } from "./associationNavigation";
 import { HospitalNavigation } from "./hospitalNavigation";
+import "../Styles/theme.css";
 
 export function Navigation() {
   const [userConnected, setUserConnected] = useState(false);
@@ -16,7 +16,6 @@ export function Navigation() {
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [userType, setUserType] = useState("");
 
-  // Récupérer le token et changer la barre de navigation en fonction de celui-ci
   useEffect(() => {
     const accessToken = Cookies.get("access_token");
     const userType = Cookies.get("user_type");
@@ -28,7 +27,6 @@ export function Navigation() {
     }
   }, []);
 
-  // Ouvrir et fermer la pop-up de connexion
   const handleLoginModalOpen = () => {
     setShowLoginModal(true);
   };
@@ -37,7 +35,6 @@ export function Navigation() {
     setShowLoginModal(false);
   };
 
-  // Ouvrir et fermer la pop-up d'inscription
   const handleRegisterModalOpen = () => {
     setShowRegisterModal(true);
   };
@@ -60,7 +57,6 @@ export function Navigation() {
               </Link>
             </div>
           </div>
-
           <div
             className="col-6 d-inline-block d-xl-none ml-md-0 py-3"
             style={{ position: "relative", top: "3px" }}
@@ -69,7 +65,6 @@ export function Navigation() {
               <span className="icon-menu h3 text-black"></span>
             </a>
           </div>
-
           <div className="col-12 col-md-8 d-none d-xl-block">
             <nav
               className="site-navigation position-relative"
@@ -100,7 +95,6 @@ export function Navigation() {
               </ul>
             </nav>
           </div>
-
           <div className="col-8 col-md-2 text-right">
             <nav
               className="site-navigation position-relative"
@@ -119,7 +113,7 @@ export function Navigation() {
                     </Nav.Link>
                   </li>
                 ) : (
-                  <>
+                  <div style={{ display: "flex", gap: "10px" }}>
                     <li>
                       <Nav.Link
                         onClick={handleLoginModalOpen}
@@ -136,7 +130,7 @@ export function Navigation() {
                         Register
                       </Nav.Link>
                     </li>
-                  </>
+                  </div>
                 )}
               </ul>
             </nav>

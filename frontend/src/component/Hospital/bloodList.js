@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Cookies from "js-cookie";
 import AddBlood from "./addBlood";
 import UpdateBlood from "./updateBlood";
+import { Navigate } from "react-router-dom";
+
 
 const BloodList = () => {
   const [bloodList, setBloodList] = useState([]);
@@ -14,8 +16,8 @@ const BloodList = () => {
     id: null,
     quantity_before: "",
   });
+  const [isHospital, setisHospital] = useState(true);
 
-  // Fonction pour récupérer la liste de sang
   const fetchBloodList = async () => {
     try {
       const accessToken = Cookies.get("access_token");
@@ -36,18 +38,27 @@ const BloodList = () => {
     fetchBloodList();
   }, []);
 
-  // Fonction pour ouvrir le modal de mise à jour
   const handleUpdateModalOpen = (blood) => {
     setShowUpdateModal(true);
     setBloodToUpdate({ id: blood.id, quantity_before: blood.quantity_ml });
   };
 
-  // Fonction pour fermer le modal de mise à jour
   const handleUpdateModalClose = () => {
     setShowUpdateModal(false);
     setBloodToUpdate({ id: null, quantity_before: "" });
   };
+    useEffect(() => {
+      const userType = Cookies.get("user_type");
 
+      if (userType !== "hospital") {
+        setisHospital(false);
+      } else {
+        fetchBloodList();
+      }
+    }, []);
+  if (!isHospital) {
+    return <Navigate to="/error" />;
+  }
   return (
     <div className="container-fluid">
       <div className="row align-items-center">

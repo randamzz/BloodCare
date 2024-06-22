@@ -29,7 +29,7 @@
   color: darkred;
 }
 
-.card {
+.card .cardy {
   display: inline-block;
   position: relative;
   width: 320px;
@@ -69,7 +69,6 @@
   bottom: 0;
   width: 5px;
   height: 100%;
-  background: linear-gradient(-45deg, rgb(152, 14, 14) 0%, #8a0040 100%);
   z-index: -1;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
 }

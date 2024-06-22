@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { Navigate } from "react-router-dom";
 import NextDonation from "./NextDonation";
 import DonationList from "./DonationList";
 import Section2 from "./section2";
@@ -10,6 +11,7 @@ const UserDonation = () => {
   const [donations, setDonations] = useState([]);
   const [lastDonationDate, setLastDonationDate] = useState(null);
   const [showDonationListModal, setShowDonationListModal] = useState(false);
+  const [isCitizen, setIsCitizen] = useState(true);
 
   const handleModalOpen = () => {
     setShowDonationListModal(true);
@@ -18,6 +20,7 @@ const UserDonation = () => {
   const handleModalClose = () => {
     setShowDonationListModal(false);
   };
+
   const fetchDonations = async () => {
     try {
       const accessToken = Cookies.get("access_token");
@@ -48,14 +51,21 @@ const UserDonation = () => {
   };
 
   useEffect(() => {
-    fetchDonations();
+    const userType = Cookies.get("user_type");
+
+    if (userType !== "citizen") {
+      setIsCitizen(false);
+    } else {
+      fetchDonations();
+    }
   }, []);
 
   const openDonationListModal = () => {
-    console.log("Button clicked!");
-    console.log(donations);
     handleModalOpen();
   };
+
+  if (!isCitizen) {
+    return <Navigate to="/error" />;  }
 
   return (
     <div>
@@ -66,7 +76,12 @@ const UserDonation = () => {
             <br />
             <button
               className="btn  rounded-5 btn-lg"
-              style={{ marginLeft: "100px", backgroundColor: " #cc466a"  }}
+              style={{
+                marginLeft: "100px",
+                backgroundColor: "#cc466a",
+                height: "50px",
+                width: "300px",
+              }}
               onClick={openDonationListModal}
             >
               Get list of your donation
@@ -77,7 +92,7 @@ const UserDonation = () => {
                   donations={donations}
                   show={handleModalOpen}
                   onHide={handleModalClose}
-                />{" "}
+                />
               </div>
             )}
           </div>

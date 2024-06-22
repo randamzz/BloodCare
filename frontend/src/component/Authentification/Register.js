@@ -62,7 +62,7 @@ const Register = ({ show, onHide }) => {
 
   //vue se que user voire
   return (
-    <Modal show={show} onHide={onHide} centered>
+    <Modal show={show} onHide={onHide} centered style={{ marginTop: "1%" }}>
       <Modal.Body className="text-center">
         <center>
           <img
@@ -92,7 +92,7 @@ const Register = ({ show, onHide }) => {
         <form
           onSubmit={handleSubmit}
           className="row overflow-auto"
-          style={{ maxHeight: "250px" }}
+          style={{ maxHeight: "300px" }}
         >
           <div className="form-group">
             <input
@@ -104,8 +104,6 @@ const Register = ({ show, onHide }) => {
               required
             />
           </div>
-          <br />
-
           <div className="form-group">
             <input
               placeholder="Your email"
@@ -116,8 +114,6 @@ const Register = ({ show, onHide }) => {
               required
             />
           </div>
-          <br />
-
           <div className="form-group">
             <select
               name="user_type"
@@ -130,8 +126,6 @@ const Register = ({ show, onHide }) => {
               <option value="association">Association</option>
             </select>
           </div>
-          <br />
-
           <div className="form-group">
             <input
               placeholder="Your password"
@@ -142,8 +136,6 @@ const Register = ({ show, onHide }) => {
               required
             />
           </div>
-          <br />
-
           <div className="form-group">
             <input
               placeholder="Confirm Password"
@@ -159,11 +151,11 @@ const Register = ({ show, onHide }) => {
             <Button
               variant="danger"
               type="submit"
-              className="group rounded-5 relative flex justify-center bg-danger"
+              className="group rounded-5 relative flex justify-center "
               style={{
-                width: "329px",
+                width: "200px",
                 margin: "0 auto",
-                backgroundColor: "#C41E3A",
+                backgroundColor: "#cc466a",
               }}
             >
               Register
@@ -171,7 +163,6 @@ const Register = ({ show, onHide }) => {
           </div>
         </form>
         <br />
-        <br /> <br />
       </Modal.Body>
     </Modal>
   );

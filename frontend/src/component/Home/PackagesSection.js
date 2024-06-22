@@ -12,8 +12,8 @@ function PackagesSection(){
                 <img className="img-fluid rounded" src="\img\banner11 .png" alt="Banner 1" />
               </div>
               <div className="col-sm-8">
-                <h2 className="text-white mb-3">"Join Our Lifesaving Community"s</h2>
-                <p className="text-white mb-4">
+                <h2 className="text-black mb-3">"Join Our Community"</h2>
+                <p className="text-black mb-4">
                 "Your generosity can save lives. Every drop of blood donated has the power to heal and give hope. Join us in our mission to make a positive difference in the world."
                 </p>
                 <a className="btn btn-secondary rounded-pill py-2 px-4" href="">Read More</a>
@@ -26,8 +26,8 @@ function PackagesSection(){
                 <img className="img-fluid rounded" src="\img\BANNER22.png" alt="Banner 2" />
               </div>
               <div className="col-sm-8">
-                <h2 className="text-white mb-3">"Be a Hero Today: Donate Blood"</h2>
-                <p className="text-white mb-4">
+                <h2 className="text-black mb-3">"Be a Hero Today: Donate Blood"</h2>
+                <p className="text-black mb-4">
                 "Be part of something greater. By donating blood, you're giving the gift of life to someone in need. Join us today and help save lives,Your contribution matters."                </p>
                 <a className="btn btn-secondary rounded-pill py-2 px-4" href="">Read More</a>
               </div>

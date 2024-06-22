@@ -12,8 +12,8 @@ const Features = () => {
             <div className="row g-2">
               <div className="col-6 position-relative wow fadeIn" data-wow-delay="0.7s">
                 <div className="about-experience  rounded">
-                  <h1 className="display-1 mb-0 text-white">5</h1>
-                  <small className="fs-5 fw-bold text-white">Years Experience</small>
+                 <center> <h1 className="display-1 mb-0 text-white">5</h1>
+                  <small className="fs-5 fw-bold text-white">Years Experience</small></center>
                   
                 </div>
               </div>

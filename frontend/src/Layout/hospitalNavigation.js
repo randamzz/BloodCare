@@ -16,20 +16,11 @@ export function HospitalNavigation() {
         </NavLink>
       </li>
       <li>
-        <NavLink
-          as={NavLink}
-          to="/hospitals/list_blood_history"
-          exact="true"
-          activeClassName="active"
-        >
-          Mousaab
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/alerte" exact activeClassName="active">
-          Dashbord
-        </NavLink>
-      </li>
+                  <NavLink to="/hospitals/blood_totals" exact activeClassName="active">
+                    Blood Totals
+                  </NavLink>
+                </li>
+
     </>
   );
 }

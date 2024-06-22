@@ -3,7 +3,10 @@ import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const DonateNow = () => (
-  <div className="col-lg-12 mb-3 d-flex align-items-center justify-content-center">
+  <div
+    className="col-lg-12 mb-3 d-flex align-items-center justify-content-center"
+    style={{ maxHeight: "250px", marginTop: "1%" }}
+  >
     <div className="w-100 d-flex flex-column text-center">
       <h5 className="border-bottom pb-2">
         <span>
@@ -34,7 +37,7 @@ const DonateNow = () => (
 
 
 const ShowDonations = ({ donations }) => (
-  <div className="row overflow-auto" style={{ maxHeight: "250px" }}>
+  <div className="row overflow-auto" style={{ maxHeight: "250px",marginTop:"1%" }}>
     {donations.map((donation, index) => (
       <div key={index} className="col-lg-12 mb-3">
         <div className="d-flex align-items-center">

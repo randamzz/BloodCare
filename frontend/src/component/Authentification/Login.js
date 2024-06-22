@@ -33,7 +33,9 @@ const Login = ({ show, onHide }) => {
       });
 
       const userData = response.data; // Les donnees recup de api django
+      console.log(response.data);
       Cookies.set("user_type", userData.user_type);
+      Cookies.set("user_email", userData.email);
 
       window.location.reload();
       onHide();
@@ -49,11 +51,14 @@ const Login = ({ show, onHide }) => {
           "Network error. Please check your internet connection."
         );
       }
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 5000);
     }
   };
 
   return (
-    <Modal show={show} onHide={onHide} centered>
+    <Modal show={show} onHide={onHide} centered style={{ marginTop: "1%" }}>
       <Modal.Body className="text-center">
         <center>
           <img
@@ -61,17 +66,16 @@ const Login = ({ show, onHide }) => {
             src="/img/BloodCare.png"
             alt=""
             style={{ maxWidth: "200px" }}
-          />{" "}
+          />
         </center>
         <h1>Sign in to your account</h1>
-        <br />
+        <br/>
         <center>
           {errorMessage && (
             <div className="alert alert-danger" role="alert">
               {errorMessage}
             </div>
           )}
-
           <form onSubmit={handleSubmit} style={{ width: "90%" }}>
             <div className="form-group">
               <input
@@ -85,8 +89,6 @@ const Login = ({ show, onHide }) => {
                 style={{ padding: "10px", margin: "0 auto", width: "100%" }}
               />
             </div>
-            <br />
-
             <div className="form-group">
               <input
                 name="password"
@@ -99,33 +101,28 @@ const Login = ({ show, onHide }) => {
                 style={{ padding: "10px", margin: "0 auto", width: "100%" }}
               />
             </div>
-            <br />
-
             <div className="form-group d-flex justify-content-between mb-4">
-              <div className="form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input rounded-5"
-                  id="rememberMe"
-                />
-                <label className="form-check-label" htmlFor="rememberMe">
-                  Remember me
-                </label>
-              </div>
+              <input
+                type="checkbox"
+                className="form-check-input rounded-5 ml-1"
+                id="rememberMe"
+              />
+              <label className="form-check-label ml-2 " htmlFor="rememberMe">
+                Remember me
+              </label>
               <a href="#" className="ml-auto">
                 Forgot your password?
               </a>
             </div>
-            <br />
             <div style={{ display: "flex", alignItems: "center" }}>
               <Button
                 variant="danger"
                 type="submit"
-                className="group rounded-5 relative flex justify-center bg-danger"
+                className="group rounded-5 relative flex justify-center "
                 style={{
-                  width: "329px",
+                  width: "200px",
                   margin: "0 auto",
-                  backgroundColor: "#C41E3A",
+                  backgroundColor: "#cc466a",
                 }}
               >
                 <i className="bi bi-lock-fill"></i>
@@ -134,7 +131,7 @@ const Login = ({ show, onHide }) => {
             </div>
           </form>
         </center>
-        <br /> <br />
+        <br />
       </Modal.Body>
     </Modal>
   );

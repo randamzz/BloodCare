@@ -17,21 +17,22 @@ const Main = () => {
   };
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <div style={{ marginLeft: "20px" }}>
-         <Alertlist />
-        </div>
-        <div style={{ marginRight: "10px" }}>
-          <AlertForm onAlertSubmitted={handleAlertSubmitted} />
-        </div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        backgroundImage: `url("${process.env.PUBLIC_URL}/img/bg.png")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div style={{ marginLeft: "20px" }}>
+        <Alertlist />
+      </div>
+      <div style={{ marginRight: "10px" }}>
+        <AlertForm onAlertSubmitted={handleAlertSubmitted} />
       </div>
     </div>
   );

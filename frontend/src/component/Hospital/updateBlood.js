@@ -23,7 +23,7 @@ const UpdateBlood = ({ show, onHide, fetchBloodList, id, quantity_before }) => {
       );
       fetchBloodList();
       onHide();
-      setUpdateBlood({ id: null, quantity_change: "" }); // Réinitialise l'état après la mise à jour
+      setUpdateBlood({ id: null, quantity_change: "" }); 
     } catch (error) {
       console.error("Error updating blood: ", error.message);
     }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import "../../Styles/templatemo-digimedia-v2.css";
+import "../Event/css/templatemo-digimedia-v2.css";
 
 import axios from "axios";
 
@@ -80,7 +80,7 @@ function AlertForm({ onAlertSubmitted }) {
               data-wow-delay="0.5s"
             >
               <h4>
-                <br /> <br />
+                <br /> <br /> <br />
                 Share Alert <em>Now</em>
               </h4>
               <div className="line-dec"></div>
@@ -267,8 +267,14 @@ function AlertForm({ onAlertSubmitted }) {
                         />
                       </div>
                     </div>
-                    <button type="submit" className="btn ">
-                      Alert
+                    <button
+                      type="submit"
+                      className="btn   "
+                      style={{
+                        width: "200px",
+                      }}
+                    >
+                      ALERT NOW
                     </button>
                   </div>
                 </div>

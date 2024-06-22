@@ -89,7 +89,7 @@ const AddDonation = ({ show, onHide }) => {
             >
               <div className="col-md-12 mb-3 rounded-5">
                 <input
-                  className="form-control"
+                  className="form-control rounded-5"
                   type="date"
                   name="date"
                   placeholder="When did you donate ?"
@@ -103,7 +103,7 @@ const AddDonation = ({ show, onHide }) => {
 
               <div className="col-md-12 mb-3 rounded-5">
                 <input
-                  className="form-control"
+                  className="form-control rounded-5"
                   type="text"
                   name="location"
                   placeholder="Where did you donate ?"
@@ -115,13 +115,16 @@ const AddDonation = ({ show, onHide }) => {
 
               <div className="col-md-12 mb-3 rounded-5">
                 <select
-                  className="form-select"
+                  className="form-select rounded-5"
                   name="blood_type"
                   value={formData.blood_type}
                   placeholder=" Select your type of blood"
                   onChange={handleChange}
                   required
                 >
+                  <option value="" disabled selected hidden>
+                    Blood Type
+                  </option>
                   <option value="A+">A+</option>
                   <option value="A-">A-</option>
                   <option value="B+">B+</option>
@@ -135,7 +138,7 @@ const AddDonation = ({ show, onHide }) => {
 
               <div className="col-md-12 mb-3 rounded-5">
                 <input
-                  className="form-control"
+                  className="form-control rounded-5"
                   type="number"
                   name="volume"
                   placeholder={`Volume donated (ml)`}
@@ -144,9 +147,15 @@ const AddDonation = ({ show, onHide }) => {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-secondary rounded-5 ">
-                Add
-              </button>
+              <center>
+                <button
+                  type="submit"
+                  className="btn btn-secondary rounded-5"
+                  style={{ width: "400px" }}
+                >
+                  Add
+                </button>
+              </center>
             </form>
             <div className="text-end">
               <hr />

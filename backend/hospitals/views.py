@@ -4,6 +4,21 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from .models import Blood, BloodHistory
 from .serializers import BloodSerializer, BloodHistorySerializer
+from django.http import JsonResponse
+from django.db.models import Sum
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def blood_totals(request):
+    hospital = request.user
+    blood_totals = (
+        Blood.objects
+        .filter(hospital=hospital)
+        .values('blood_type')
+        .annotate(total_quantity_ml=Sum('quantity_ml'))
+        .order_by('blood_type')
+    )
+    return JsonResponse(list(blood_totals), safe=False)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])

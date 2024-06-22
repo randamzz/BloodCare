@@ -6,21 +6,6 @@ export function CitizenNavigation() {
   return (
     <>
       <li>
-        <NavLink to="/geocode" exact activeClassName="active">
-          Map
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          as={NavLink}
-          to="/hospitals/list_blood/"
-          exact="true"
-          activeClassName="active"
-        >
-          Blood List
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/event" exact activeClassName="active">
           Events
         </NavLink>

@@ -4,8 +4,7 @@ import "../../Styles/counter.css";
 import AddDonation from "./AddDonation";
 
 const NextDonation = ({ lastDonationDate }) => {
-
-//ouverture et fermeture modl add
+  //ouverture et fermeture modl add
   const [showAddDonationModal, setShowAddDonationModal] = useState(false);
 
   const handleModalOpen = () => {
@@ -16,10 +15,10 @@ const NextDonation = ({ lastDonationDate }) => {
     setShowAddDonationModal(false);
   };
 
-    const openAddDonationtModal = () => {
-      console.log("you are in  add!");
-      handleModalOpen();
-    };
+  const openAddDonationtModal = () => {
+    console.log("you are in  add!");
+    handleModalOpen();
+  };
 
   // Function  add 3 months to the last donation date
   const addMonthsToDate = (date) => {
@@ -103,18 +102,24 @@ const NextDonation = ({ lastDonationDate }) => {
             <br />
             <br />
             <br />
-            You are able to donate <br /> <span>Donate Now</span>{" "}
+            You are able to donate <br /> <span>Donate Now</span>
           </h1>
+
           <button
-            className="btn btn-danger rounded-5 btn-lg"
-            style={{ marginLeft: "39px" }}
+            className="btn  rounded-5 btn-lg"
+            style={{
+              marginLeft: "50px",
+              backgroundColor: " #cc466a",
+              height: "50px",
+              width: "300px",
+            }}
             onClick={openAddDonationtModal}
           >
             Add your last donation
           </button>
           {showAddDonationModal && (
             <div>
-              <AddDonation show={handleModalOpen} onHide={handleModalClose} />{" "}
+              <AddDonation show={handleModalOpen} onHide={handleModalClose} />
             </div>
           )}
         </div>
