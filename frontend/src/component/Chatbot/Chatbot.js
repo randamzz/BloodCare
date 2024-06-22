@@ -18,7 +18,7 @@ export class Chatbot extends Component {
     if (accessToken) {
       (function (d, m) {
         var kommunicateSettings = {
-          appId: "2c702ebe48b7c8b2837da1a1bdc949791",
+          appId: "30dd35031753e84906dbb0ee29ec0e54d",
           popupWidget: true,
           automaticChatOpenOnNavigation: true,
         };

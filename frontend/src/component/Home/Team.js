@@ -4,7 +4,6 @@ const Team = () => {
   const teamMembers = [
     {
       name: "Ahassad Nada",
-      role: "Founder",
       imgSrc: "img/NADA.png",
       delay: "0.1s",
       social: {
@@ -15,7 +14,6 @@ const Team = () => {
     },
     {
       name: "Bouchouikar Saif",
-      role: "Veterinarian",
       imgSrc: "img/SAIF.png",
       delay: "0.3s",
       social: {
@@ -26,7 +24,6 @@ const Team = () => {
     },
     {
       name: "El Maazouza Randa",
-      role: "Farmer",
       imgSrc: "img/Randa.png",
       delay: "0.5s",
       social: {
@@ -37,7 +34,6 @@ const Team = () => {
     },
     {
       name: "Laachir Moussaab",
-      role: "Marketing",
       imgSrc: "img/Randa.png",
       delay: "0.7s",
       social: {
@@ -75,26 +71,39 @@ const Team = () => {
                   alt={member.name}
                 />
                 <h5>{member.name}</h5>
-                <p className="txt-primary">{member.role}</p>
+                <br />
+
                 <div className="d-flex justify-content-center">
                   <a
                     className="btn btn-square btn-outline-secondary rounded-circle mx-1"
                     href={member.social.facebook}
-                  > <img className="img-fluid rounded" src="\img\icons8-twitter-circled-48.png" alt="Banner 1" />
-                  
+                  >
+                    {" "}
+                    <img
+                      className="img-fluid rounded"
+                      src="\img\icons8-twitter-circled-48.png"
+                      alt="Banner 1"
+                    />
                   </a>
                   <a
                     className="btn btn-square btn-outline-secondary rounded-circle mx-1"
                     href={member.social.twitter}
                   >
-                   <img className="img-fluid rounded" src="\img\icons8-instagram-48.png" alt="Banner 1" />
+                    <img
+                      className="img-fluid rounded"
+                      src="\img\icons8-instagram-48.png"
+                      alt="Banner 1"
+                    />
                   </a>
                   <a
                     className="btn btn-square btn-outline-secondary rounded-circle mx-1"
                     href={member.social.instagram}
                   >
-                      <img className="img-fluid rounded" src="\img\icons8-facebook-48.png" alt="Banner 1" />
-                   
+                    <img
+                      className="img-fluid rounded"
+                      src="\img\icons8-facebook-48.png"
+                      alt="Banner 1"
+                    />
                   </a>
                 </div>
               </div>
