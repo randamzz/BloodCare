@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Modal, Button } from "react-bootstrap";
-import "../../Styles/counter.css";
-import Alert from "../Home/Alert";
+import "../../Styles/counter.css"; 
+import Alert from "../Home/Alert"; 
+
 const EditEvent = ({
   show,
   onHide,
@@ -16,7 +17,6 @@ const EditEvent = ({
   const [formDate, setFormDate] = useState(initialDate);
   const [formTime, setFormTime] = useState(initialTime);
   const [message, setMessage] = useState("");
-  const [eventId, setEventId] = useState(id);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,9 +28,8 @@ const EditEvent = ({
     };
 
     try {
-      console.log(eventId);
       const response = await axios.put(
-        `http://localhost:8000/Event/edit_event/${eventId}/`,
+        `http://localhost:8000/Event/edit_event/${id}/`,
         formData
       );
       if (response.status === 200) {
@@ -45,7 +44,6 @@ const EditEvent = ({
   };
 
   return (
-<<<<<<< HEAD
     <Modal show={show} onHide={onHide} centered style={{ marginTop: "2%" }}>
       <Modal.Body>
         <div className="container-xxl py-2">
@@ -58,21 +56,7 @@ const EditEvent = ({
           <Alert />
           <form
             onSubmit={handleSubmit}
-            className="row overflow-auto "
-=======
-    <Modal show={show} onHide={onHide} centered>
-      <Modal.Body>
-        <div className="container-xxl py-2">
-          <div className="text-center wow fadeInUp" data-wow-delay="0.5s">
-            <h1 className="mb-0">Update Event {eventName}</h1>
-            <hr />
-          </div>
-          <Alert />
-
-          <form
-            onSubmit={handleSubmit}
             className="row overflow-auto"
->>>>>>> 57ef3ddab8c4e5d03dcd665133bcb6be392a637f
             style={{ maxHeight: "200px" }}
           >
             {message && (
@@ -84,11 +68,7 @@ const EditEvent = ({
               <input
                 placeholder={initialLocation}
                 type="text"
-<<<<<<< HEAD
                 className="form-control rounded-5"
-=======
-                className="form-control"
->>>>>>> 57ef3ddab8c4e5d03dcd665133bcb6be392a637f
                 id="location"
                 value={formLocation}
                 onChange={(e) => setFormLocation(e.target.value)}
@@ -98,11 +78,7 @@ const EditEvent = ({
               <input
                 placeholder={initialDate}
                 type="date"
-<<<<<<< HEAD
                 className="form-control rounded-5"
-=======
-                className="form-control"
->>>>>>> 57ef3ddab8c4e5d03dcd665133bcb6be392a637f
                 id="date"
                 value={formDate}
                 onChange={(e) => setFormDate(e.target.value)}
@@ -112,11 +88,7 @@ const EditEvent = ({
               <input
                 placeholder={initialTime}
                 type="time"
-<<<<<<< HEAD
                 className="form-control rounded-5"
-=======
-                className="form-control"
->>>>>>> 57ef3ddab8c4e5d03dcd665133bcb6be392a637f
                 id="time"
                 value={formTime}
                 onChange={(e) => setFormTime(e.target.value)}

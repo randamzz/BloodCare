@@ -72,11 +72,6 @@ export function Navigation() {
             >
               <ul className="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li>
-                  <NavLink to="/dashbord" exact activeClassName="active">
-                    Dashboard
-                  </NavLink>
-                </li>
-                <li>
                   <NavLink to="/" exact activeClassName="active">
                     Home
                   </NavLink>

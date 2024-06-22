@@ -20,12 +20,7 @@ import EventDetailsPage from "./component/Event/EventDetailsPage";
 import EventMain from "./component/Event/EventMain";
 import BloodList from "./component/Hospital/bloodList";
 import { Navigation } from "./Layout/navigations";
-<<<<<<< HEAD
 import NotFound from "./Layout/NotFound";
-=======
-import Dashboard from "./dashbord/Dashboard";
-
->>>>>>> 57ef3ddab8c4e5d03dcd665133bcb6be392a637f
 import ListBloodHistory from "./component/Hospital/listbloodhistory";
 import BloodTotalsPage from "./component/Hospital/BloodTotalsPage";
 
@@ -48,21 +43,14 @@ const AppContent = () => {
         <Route path="/Event/events/:eventId" element={<EventDetailsPage />} />
         <Route path="/add_events" element={<EventMain />} />
         <Route path="/hospitals/list_blood" element={<BloodList />} />
-<<<<<<< HEAD
+
         <Route path="/hospitals/blood_totals" element={<BloodTotalsPage />} />
         <Route path="*" element={<NotFound />} />
-=======
-        <Route path="/dashbord" element={<Dashboard />} />
-
->>>>>>> 57ef3ddab8c4e5d03dcd665133bcb6be392a637f
         <Route
           path="/hospitals/list_blood_history"
           element={<ListBloodHistory />}
         />
-<<<<<<< HEAD
         <Route path="/error" element={<NotFound />} />
-=======
->>>>>>> 57ef3ddab8c4e5d03dcd665133bcb6be392a637f
       </Routes>
     </>
   );
