@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./PlannedEventsList.css";
 import Geocode from "../Map/Geocode";
-import EditEvent from "./EditEvent";
-import { Button } from "react-bootstrap";
-
 const PlannedEventsList = () => {
   const [events, setEvents] = useState([]);
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
-
-  const handleUpdateModalOpen = () => {
-    setShowUpdateModal(true);
-  };
-
-  const handleUpdateModalClose = () => {
-    setShowUpdateModal(false);
-  };
+  const userType = Cookies.get("user_type");
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -25,7 +15,6 @@ const PlannedEventsList = () => {
           "http://localhost:8000/Event/liste_events/"
         );
         setEvents(response.data);
-        console.log("Fetched events:", response.data);
       } catch (error) {
         console.error("Error fetching events:", error);
       }
@@ -48,55 +37,38 @@ const PlannedEventsList = () => {
     return date.toLocaleTimeString(undefined, options);
   };
 
+  if (userType !== "citizen" && userType !== "association") {
+    return <Navigate to="/error" />;
+  }
+
   return (
     <div className="events-container">
       <h1 className="events-title">
+        {/* MAP DES EVENMENTS PROCHE <Geocode /> */}
         <span className="black-text">Planned</span>{" "}
         <span className="dark-red-text">Events!</span>{" "}
       </h1>
-      <div className="row">
-        <div className="col-md-6">
-          <div className="events-list">
-            {events.map((event) => (
-              <div key={event.id} className="card m-4">
-                <div className="content">
-                  <p className="heading">{event.eventname}</p>
-                  <p className="para">Location: {event.location}</p>
-                  <p className="para">
-                    Date: {formatDate(event.date_and_hour)}
-                  </p>
-                  <p className="para">
-                    Time: {formatTime(event.date_and_hour)}
-                  </p>
-                  <Link
-                    to={`/Event/events/${event.id}/`}
-                    className="button type1"
-                  >
-                    Participate!
-                  </Link>
-                  <Button onClick={() => handleUpdateModalOpen()}>
-                    Update
-                  </Button>
-                  {showUpdateModal && (
-                    <EditEvent
-                      show={showUpdateModal}
-                      onHide={handleUpdateModalClose}
-                      eventName={event.eventname}
-                      location={event.location}
-                      date={event.date_and_hour}
-                      time={event.date_and_hour}
-                      id={event.id}
-                    />
-                  )}
-                </div>
-              </div>
-            ))}
+      <div className="events-list">
+        {events.map((event) => (
+          <div key={event.id} className="decoration__data m-4">
+            <img
+              src="https://th.bing.com/th/id/R.8488212d54ffcca478b950faf962e76b?rik=4STiOHBqbhxnJA&pid=ImgRaw&r=0"
+              alt=""
+              className="decoration__img"
+            />
+            <h3 className="events-title">{event.eventname}</h3>
+
+            <p className="para">Location: {event.location}</p>
+            <p className="para">Date: {formatDate(event.date_and_hour)}</p>
+            <p className="para">Time: {formatTime(event.date_and_hour)}</p>
+
+            <Link to={`/Event/events/${event.id}/`} className="button type2">
+              Details
+            </Link>
           </div>
-        </div>
-        <div className="col-md-6">
-          <Geocode />
-        </div>
+        ))}
       </div>
+      <div> </div>
     </div>
   );
 };

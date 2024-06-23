@@ -1,0 +1,100 @@
+.my-events-container {
+  padding-top: 100px;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.my-events-title {
+  margin: 20px 0;
+  font-weight: 700;
+  font-size: 2em;
+  text-align: center;
+  color: darkred;
+  text-transform: uppercase;
+}
+
+.my-events-black-text {
+  color: black;
+}
+
+.my-events-dark-red-text {
+  color: darkred;
+}
+
+.my-events-form {
+  display: flex; /* Ensure elements align correctly */
+  justify-content: center; /* Center form elements */
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Prevent overflow by wrapping elements */
+}
+
+.my-events-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.my-events-button {
+  background-color: darkred;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.my-events-loading-text {
+  font-style: italic;
+  color: darkred;
+}
+
+.my-events-error-text {
+  color: darkred;
+  font-weight: bold;
+}
+
+.my-events-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%; /* Ensure grid fits within container */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.my-events-card {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.my-events-content {
+  color: #333;
+}
+
+.my-events-heading {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.my-events-para {
+  margin-bottom: 5px;
+}
+
+.my-events-link {
+  display: inline-block;
+  background-color: darkred;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.my-events-link:hover {
+  color: cornsilk;
+  background-color: #900;
+}

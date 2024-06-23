@@ -1,4 +1,4 @@
-.navbar {
+/* .navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@
   display: inline-block;
   position: relative;
   width: 320px;
-  height: 320px; /* Adjust the height as needed for all cards */
+  height: 320px; 
   box-shadow: 0 10px 20px rgba(132, 15, 15, 0.388);
   padding: 32px;
   overflow: visible;
@@ -139,4 +139,79 @@
 
 .type1:hover::before {
   transform: translateY(-50px) scale(0) rotate(120deg);
+} */
+
+
+/* SAIF STYLE */
+
+
+.events-container {
+  padding-top: 80px;
+}
+
+.events-title {
+  margin: 20px 0;
+  font-weight: 700;
+  font-size: 2em;
+  text-align: center;
+  color: darkred;
+  text-transform: uppercase;
+}
+
+.black-text {
+  color: black;
+}
+
+.dark-red-text {
+  color: darkred;
+}
+
+.events-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.decoration__data {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--container-color);
+  box-shadow: 0 2px 6px rgba(228, 51, 69, 0.15);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  margin: 10px;
+  width: calc(33.33% - 20px); /* Adjust based on margin and desired spacing */
+}
+
+.decoration__data:hover {
+  box-shadow: 0 3px 12px rgba(65, 11, 16, 0.15);
+}
+
+.decoration__img {
+  width: 100%;
+  max-width: 400px; /* Adjust as needed */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Adjust the value for the desired rounded corners */
+
+}
+
+.decoration__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-1);
+}
+.button {
+  display: inline-block;
+  background-color: darkred;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background-color: #900;
+  color: cornsilk;
 }

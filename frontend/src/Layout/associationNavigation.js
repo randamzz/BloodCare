@@ -15,6 +15,11 @@ export function AssociationNavigation() {
           Create Event
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/myevents" exact activeClassName="active">
+          My Events
+        </NavLink>
+      </li>
     </>
   );
 }

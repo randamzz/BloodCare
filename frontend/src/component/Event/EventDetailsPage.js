@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useParams } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./EventDetailsPage.css";
-import Cookies from "js-cookie";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -39,7 +39,7 @@ const EventDetailsPage = () => {
 
           const location = response.data.location;
           const geocodeResponse = await axios.get(
-            `https://nominatim.openstreetmap.org/search`,
+            "https://nominatim.openstreetmap.org/search",
             {
               params: {
                 q: location,
@@ -78,7 +78,7 @@ const EventDetailsPage = () => {
     setSubmitting(true);
     try {
       const response = await axios.post(
-        `http://localhost:8000/Event/api/events/${eventId}/submit_email/`,
+        `http://localhost:8000/Event/events/${eventId}/generate_ticket/`,
         {
           email: email,
         }
@@ -87,8 +87,10 @@ const EventDetailsPage = () => {
         "Email submitted successfully. Check your inbox for the ticket!"
       );
       setEmail("");
+      setErrorMessage("");
     } catch (error) {
       setErrorMessage("An error occurred. Please try again later.");
+      setSuccessMessage("");
     }
     setSubmitting(false);
   };
@@ -100,17 +102,79 @@ const EventDetailsPage = () => {
     <div className="event-details-container">
       {eventDetails ? (
         <div style={{ paddingTop: "40px" }} className="event-details">
-          <h1>{eventDetails.eventname}</h1>
-          <p>__________________________________________________________</p>
+          <img
+            alt=""
+            src="https://img.freepik.com/premium-vector/man-sitting-chair-with-medical-drip-nurse-collecting-blood-from-donor_11197-415.jpg?w=2000"
+          />
 
-          <p>Location: {eventDetails.location}</p>
-          <p>Association: {eventDetails.association_or_hospital}</p>
-          <p>
-            Date: {new Date(eventDetails.date_and_hour).toLocaleDateString()}
+          <h1>{eventDetails.eventname}</h1>
+          <div className="single-post-inner-content">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
+              Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+              Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris
+              massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti
+              sociosqu ad litora torquent per conubia nostra, per inceptos
+              himenaeos. Curabitur sodales ligula in libero. Sed dignissim
+              lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In
+              scelerisque sem at dolor. Maecenas mattis.
+            </p>
+          </div>
+          <p className="single-post-meta">
+            <i className="fa fa-user"></i>&nbsp; Blood Donor &nbsp; &nbsp;
+            <i className="fa fa-share"></i>&nbsp; Donate Blood, Save Life
           </p>
-          <p>
-            Time: {new Date(eventDetails.date_and_hour).toLocaleTimeString()}
-          </p>
+          <div className="event-details-container">
+            <div className="event-details">
+              <h1>Event Details</h1>
+              <table className="details-table">
+                <tbody>
+                  <tr>
+                    <td className="details-header">Details</td>
+                  </tr>
+                  <tr>
+                    <td className="details-label">Date:</td>
+                    <td>
+                      {new Date(
+                        eventDetails.date_and_hour
+                      ).toLocaleDateString()}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="details-label">Time:</td>
+                    <td>
+                      {new Date(
+                        eventDetails.date_and_hour
+                      ).toLocaleTimeString()}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="details-label">Cost:</td>
+                    <td>Free</td>
+                  </tr>
+                  <tr>
+                    <td className="details-header">Organizer</td>
+                  </tr>
+                  <tr>
+                    <td className="details-label">Association:</td>
+                    <td>{eventDetails.association_or_hospital}</td>
+                  </tr>
+                  <tr>
+                    <td className="details-label">Phone:</td>
+                    <td>01 4537 8639 243</td>
+                  </tr>
+                  <tr>
+                    <td className="details-header">Address</td>
+                  </tr>
+                  <tr>
+                    <td className="details-label">Location:</td>
+                    <td>{eventDetails.location}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
           {coordinates && (
             <MapContainer
@@ -127,7 +191,6 @@ const EventDetailsPage = () => {
               </Marker>
             </MapContainer>
           )}
-
           <div style={{ paddingTop: "20px" }}>
             <form onSubmit={handleSubmit}>
               <input
@@ -146,10 +209,8 @@ const EventDetailsPage = () => {
       ) : (
         <div>No event details available.</div>
       )}
-
-      {/* Display success or error message */}
-      {successMessage && <div>{successMessage} </div>}
-      {errorMessage && <div> {errorMessage}</div>}
+      {successMessage && <div>{successMessage}</div>}
+      {errorMessage && <div>{errorMessage}</div>}
     </div>
   );
 };

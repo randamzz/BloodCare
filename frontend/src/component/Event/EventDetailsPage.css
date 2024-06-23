@@ -1,4 +1,7 @@
-.navbar {
+
+/* STYLE NADA  */
+
+/* .navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,21 +13,21 @@
   
   .event-details-container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: calc(100vh - 60px); /* Full viewport height minus navbar height */
-    padding-top: 100px; /* Adjust for navbar height */
-  }
+    justify-content: center; 
+    align-items: center; 
+    min-height: calc(100vh - 60px); 
+    padding-top: 100px; }   
+ 
   
   .event-details {
     border:1px solid #333;
     padding: 20px;
-    border-radius: 0; /* Remove border-radius */
+    border-radius: 0; 
     background-color: rgb(255, 255, 255);
-    width: 150vw; /* Adjust the width as needed */
-    height: 40vw; /* Same height as width */
-    max-width: 800px; /* Maximum width */
-    max-height: 800px; /* Maximum height */
+    width: 150vw; 
+    height: 40vw; 
+    max-width: 800px; 
+    max-height: 800px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,4 +37,153 @@
   .event-details h1{
     text-transform: uppercase;
   }
+ */
 
+
+/* STYLE SAIF  */
+
+ .event-details-container {
+  width: 80%; /* Add width to the container */
+  margin: 0 auto; /* Center the container */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: calc(100vh - 60px); /* Full viewport height minus navbar height */
+  padding-top: 100px; /* Adjust for navbar height */
+}
+
+/* Style for the event details box */
+.event-details {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  background-color: #fff;
+  width: 100%; /* Adjust the width as needed */
+  max-width: 1200px; /* Maximum width */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Style for the h1 inside the event details box */
+.event-details h1 {
+  text-transform: uppercase;
+  font-size: 2.5em; /* Increase font size */
+  color: darkred; /* Dark text color */
+  margin-bottom: 20px; /* Add space below the h1 */
+}
+
+/* Style for the form */
+.event-details form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for the input field */
+.event-details input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for the input field */
+.event-details input[type="email"]:focus {
+  border-color: #666; /* Darker border color on focus */
+}
+
+/* Style for the button */
+.event-details button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #920000; /* Red background color */
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for the button */
+.event-details button:hover {
+  background-color: #690000; /* Darker red on hover */
+}
+
+/* Style for the success message */
+.event-details .success-message {
+  color: #00cc00; /* Green text color */
+  margin-top: 10px;
+  font-size: 1.2em; /* Increase font size */
+}
+
+/* Style for the error message */
+.event-details .error-message {
+  color: #4f0000; /* Red text color */
+  margin-top: 10px;
+  font-size: 1.2em; /* Increase font size */
+}
+
+
+.details-table {
+  width: 800px;
+  padding-bottom: 80px;
+}
+
+.details-table tr {
+  border-bottom: 1px solid #ccc;
+}
+
+.details-header {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #f9f9f9;
+  padding: 10px;
+  text-align: left;
+}
+
+.details-label {
+  font-weight: bold;
+  padding: 10px;
+  width: 30%;
+  vertical-align: top;
+}
+
+.details-table td {
+  padding: 10px;
+}
+
+.details-table a {
+  color: #920000;
+  text-decoration: none;
+}
+
+.details-table a:hover {
+  text-decoration: underline;
+}
+.event-details .location, .event-details .association {
+  font-weight: bold; /* Make the text bold */
+  color: #510000; /* Red text color */
+}
+
+/* Style for the date and time text */
+.event-details .date, .event-details .time {
+  color: #666; /* Lighter text color */
+}
+
+.single-post-inner-content p {
+  text-decoration: italic;
+  font-size: 1em;
+  color: #666;
+  justify-content: baseline;
+}
+
+/* Style for the image */
+.event-details img {
+  display: block;
+  margin: 0 auto; /* Center the image */
+  height: 400px;
+  width: 400px;
+}

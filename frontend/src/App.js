@@ -6,7 +6,8 @@ import {
 } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-
+import MyEvents from "./component/Event/MyEvents";
+import MyEventDetails from "./component/Event/MyEventDetails";
 import Login from "./component/Authentification/Login";
 import Logout from "./component/Authentification/Logout";
 import Register from "./component/Authentification/Register";
@@ -41,9 +42,14 @@ const AppContent = () => {
         <Route path="/geocode" element={<Geocode />} />
         <Route path="/event" element={<PlannedEventsList />} />
         <Route path="/Event/events/:eventId" element={<EventDetailsPage />} />
+        <Route path="/events" element={<EventMain />} />
+        <Route path="/myevents" element={<MyEvents />} />
+        <Route
+          path="/Event/participants_details/:eventId/"
+          element={<MyEventDetails />}
+        />
         <Route path="/add_events" element={<EventMain />} />
         <Route path="/hospitals/list_blood" element={<BloodList />} />
-
         <Route path="/hospitals/blood_totals" element={<BloodTotalsPage />} />
         <Route path="*" element={<NotFound />} />
         <Route

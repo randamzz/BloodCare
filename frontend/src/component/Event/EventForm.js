@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import "./css/templatemo-digimedia-v2.css";
 import axios from "axios";
-
+import Cookies from "js-cookie";
 
 function EventForm({ onEventSubmitted }) {
+  const associationName = Cookies.get("name");
+  const navigate = useNavigate();
+  const userType = Cookies.get("user_type");
   const [formData, setFormData] = useState({
     eventname: "",
     location: "",
-    association_or_hospital: "",  // Updated field name
+    association_or_hospital: associationName,
     date: "",
     hour: "",
   });
@@ -17,7 +20,15 @@ function EventForm({ onEventSubmitted }) {
   const [previousPath, setPreviousPath] = useState("");
   const location = useLocation();
 
+  const [isAssociation, setIsAssociation] = useState(
+    userType === "association"
+  );
+
   useEffect(() => {
+    if (!isAssociation) {
+      return;
+    }
+
     const getLocation = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -32,9 +43,8 @@ function EventForm({ onEventSubmitted }) {
     };
 
     getLocation();
-
     setPreviousPath(location.pathname);
-  }, [location.pathname]);
+  }, [location.pathname, isAssociation]);
 
   const handleChange = (e) => {
     setFormData({
@@ -56,20 +66,22 @@ function EventForm({ onEventSubmitted }) {
         setFormData({
           eventname: "",
           location: "",
-          association_or_hospital: "",  // Updated field name
+          association_or_hospital: associationName,
           date: "",
           hour: "",
         });
+        navigate("/myevents");
       }
     } catch (error) {
       console.error("Error submitting the form:", error);
     }
   };
 
+  if (!isAssociation) {
+    return <Navigate to="/error" />;
+  }
+
   return (
-
-
-    
     <div id="contact" className="contact-us section">
       <div className="container">
         <div className="row">
@@ -164,25 +176,6 @@ function EventForm({ onEventSubmitted }) {
                         />
                       </div>
 
-                      <div className="col-md-12 mb-3">
-                        <label
-                          className="form-label visually-hidden"
-                          htmlFor="inputAssociationOrHospital"
-                        >
-                          Association or Hospital Name
-                        </label>
-                        <input
-                          className="form-control form-quriar-control"
-                          id="inputAssociationOrHospital"
-                          type="text"
-                          name="association_or_hospital"  // Updated field name
-                          placeholder="Association or Hospital Name"
-                          value={formData.association_or_hospital}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-
                       <div className="col-md-6 mb-3">
                         <label
                           className="form-label visually-hidden"
@@ -232,7 +225,5 @@ function EventForm({ onEventSubmitted }) {
     </div>
   );
 }
-
-
 
 export default EventForm;
