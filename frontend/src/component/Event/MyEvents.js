@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import "./MyEvents.css";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
-import EditEvent from "./EditEvent"; 
+import EditEvent from "./EditEvent";
+import "./css/templatemo-digimedia-v2.css";
 
 const MyEvents = () => {
   const [events, setEvents] = useState([]);
@@ -12,8 +13,8 @@ const MyEvents = () => {
   const [error, setError] = useState(null);
   const associationName = Cookies.get("name");
   const [isAssociation, setIsAssociation] = useState(true);
-  const [selectedEvent, setSelectedEvent] = useState(null); 
-  const [showEditModal, setShowEditModal] = useState(false); 
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   useEffect(() => {
     const userType = Cookies.get("user_type");
@@ -52,7 +53,7 @@ const MyEvents = () => {
   const handleEditModalClose = () => {
     setShowEditModal(false);
     setSelectedEvent(null);
-    fetchEvents(); 
+    fetchEvents();
   };
 
   if (!isAssociation) {
@@ -60,35 +61,82 @@ const MyEvents = () => {
   }
 
   return (
-    <div className="my-events-container">
-      <h1 className="my-events-title">
-        <span className="my-events-black-text">My</span>{" "}
-        <span className="my-events-dark-red-text">Events</span>
-      </h1>
-      {loading && <p className="my-events-loading-text">Loading events...</p>}
-      {error && <p className="my-events-error-text">{error}</p>}
-      <div className="my-events-list">
-        {events.map((event) => (
-          <div key={event.id} className="my-events-card m-4">
-            <div className="my-events-content">
-              <p className="my-events-heading">{event.eventname}</p>
-              <p className="my-events-para">Location: {event.location}</p>
-              <p className="my-events-para">Date: {event.date_and_hour}</p>
-              <Link
-                to={`/Event/participants_details/${event.id}/`}
-                className="my-events-link"
-              >
-                Participants
-              </Link>
-              <button
-                onClick={() => handleEditClick(event)}
-                className="btn btn-secondary mt-2"
-              >
-                Update
-              </button>
+    <section className="events" id="events-section">
+      <div className="content-wrapper">
+        <div className="inner-container container-fluid">
+          <div className="row">
+            <div
+              className="section-heading wow fadeIn"
+              data-wow-duration="1s"
+              data-wow-delay="0.5s"
+            >
+              <h4>
+                My <em>Events</em>
+              </h4>
+              <center>
+                <div className="line-dec "></div>
+              </center>
             </div>
           </div>
-        ))}
+          <div className="row">
+            {loading && (
+              <div className="col-md-12">
+                <p className="my-events-loading-text">Loading events...</p>
+              </div>
+            )}
+            {error && (
+              <div className="col-md-12">
+                <p className="my-events-error-text">{error}</p>
+              </div>
+            )}
+            {events.map((event) => (
+              <div key={event.id} className="col-md-4 mb-4">
+                <div className="project-item">
+                  <div className="event-item">
+                    <div className="date">
+                      <h3 className="events-title"> {event.eventname}</h3>
+                    </div>
+                    <div
+                      className="dh"
+                      style={{
+                        marginTop: "2%",
+                      }}
+                    >
+                      Date and time: {event.date_and_hour}
+                    </div>
+                    <div className="location">Location: {event.location}</div>
+                    <div
+                      className="row"
+                      style={{
+                        marginTop: "3%",
+                      }}
+                    >
+                      <div className="col d-flex justify-content-start align-items-center">
+                        <Link
+                          to={`/Event/participants_details/${event.id}/`}
+                          className="btn rounded-5"
+                          style={{
+                            backgroundColor: "rgba(0, 132, 139, 0.39)",
+                            color: "black",
+                          }}
+                        >
+                          View Participants
+                        </Link>
+                        <button
+                          onClick={() => handleEditClick(event)}
+                          className="btn rounded-5 ml-2"
+                          style={{ backgroundColor: "#cc466a", color: "white" }}
+                        >
+                          Update
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       {selectedEvent && (
         <EditEvent
@@ -101,7 +149,7 @@ const MyEvents = () => {
           id={selectedEvent.id}
         />
       )}
-    </div>
+    </section>
   );
 };
 

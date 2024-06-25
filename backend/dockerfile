@@ -4,7 +4,7 @@ FROM python:3.9
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /backend
 
-# Copier les fichiers de dépendances
+#  les fichiers de dépendances
 COPY requirements.txt .
 
 # Installer les dépendances

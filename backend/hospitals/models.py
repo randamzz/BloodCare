@@ -15,18 +15,24 @@ class Blood(models.Model):
     id = models.AutoField(primary_key=True)
     blood_type = models.CharField(max_length=3, choices=blood_type_choices)
     quantity_ml = models.PositiveIntegerField()
-    hospital = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'user_type': 'citizen'})
+    hospital = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'user_type': 'hospital'})
     date_donation = models.DateField(auto_now_add=True)
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.blood_type} - {self.quantity_ml}ml - {self.date_donation} "
-class BloodHistory(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    blood_type = models.CharField(max_length=10, default='Unknown')  # Ajout de la valeur par défaut
-    change_type = models.CharField(max_length=10, choices=[('ADD', 'Add'), ('UPDATE', 'Update')])
-    change_quantity = models.IntegerField()
-    new_quantity = models.IntegerField()
-    timestamp = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f" {self.blood_type} - {self.change_type} - {self.timestamp}"
+class BloodHistory(models.Model):
+    ACTION_CHOICES = (
+        ('add', 'Add'),
+        ('increase', 'Increase'),
+        ('decrease', 'Decrease'),
+    )
+
+    blood = models.ForeignKey(Blood, on_delete=models.CASCADE)
+    action = models.CharField(max_length=10, choices=ACTION_CHOICES)
+    quantity_change = models.IntegerField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def _str_(self):
+        return f"{self.blood.blood_type} - {self.action} - {self.timestamp}"

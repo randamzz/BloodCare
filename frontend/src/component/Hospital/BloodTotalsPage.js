@@ -264,6 +264,14 @@ const BloodTotalsPage = () => {
                       </tbody>
                     </table>
                   </div>
+
+
+
+
+
+
+
+                  
                 </div>
               </div>
             </div>

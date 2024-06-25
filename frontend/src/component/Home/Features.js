@@ -43,9 +43,9 @@ const Features = () => {
               </div>
               <div className="col-sm-6">
                 
-                <img className="img-fluide mb-4" src="\img\IC1.png" alt="Organic Products" />
+                <img className="img-fluide mb-4" src="\img\IC1.png" alt="Blood " />
                 
-                <h5 className="mb-3">Organic Products</h5>
+                <h5 className="mb-3">Blood</h5>
                 <span>Clita erat ipsum et lorem et sit, sed stet lorem sit clita</span>
               </div>
             </div>

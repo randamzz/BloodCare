@@ -8,8 +8,7 @@
 }
 
 .box {
-    width: 600px;
-    border-bottom: 20px solid darkred;
+    border-bottom: 20px solid #cc466a;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -19,12 +18,14 @@
 
 .box h2 {
     color: #fff;
-    background: darkred;
+    background: #cc466a;
     padding: 10px 20px;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 700;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+      text-transform: capitalize;
+
 }
 
 .myevent-loading-text, .myevent-error-text {
@@ -68,9 +69,9 @@
 .box ul li:hover {
     transform: scale(1.1);
     z-index: 5;
-    background: darkred;
+    background: rgba(0, 132, 139, 0.39);
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    color: #fff;
+    color: black;
     opacity: 1;
 }
 
@@ -79,7 +80,7 @@
     height: 20px;
     text-align: center;
     line-height: 20px;
-    background: darkred;
+    background: rgba(0, 132, 139, 0.39);
     color: #fff;
     display: inline-block;
     border-radius: 50%;
@@ -91,5 +92,5 @@
 
 .box ul li:hover span {
     background: #fff;
-    color: darkred;
+    color: rgba(0, 132, 139, 0.39);
 }

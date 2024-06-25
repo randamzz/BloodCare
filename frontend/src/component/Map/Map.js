@@ -13,69 +13,60 @@ const MapComponent = ({ coordinates }) => {
       center:
         coordinates.length > 0
           ? [coordinates[0].longitude, coordinates[0].latitude]
-          : [0, 0], 
+          : [0, 0],
       zoom: 12,
     });
 
-    // Ajoutez des marqueurs pour chaque coordonnée
+    // Add markers for each coordinate
     coordinates.forEach((coord, index) => {
       const latitude = parseFloat(coord.latitude);
       const longitude = parseFloat(coord.longitude);
 
       if (!isNaN(latitude) && !isNaN(longitude)) {
-        // Créez le popup pour chaque marqueur
+        // Create popup for each marker
         const popup = new maptilersdk.Popup({ offset: 25 }).setText(
-          `Hôpital ${index + 1}`
+          `Hospital ${index + 1}`
         );
 
-        // Créez l'élément de marqueur
+        // Create marker element
         const el = document.createElement("div");
         el.className = "marker";
-        el.style.backgroundImage =
-          el.style.backgroundImage = `url('/img/redMarker.png')`;
-
+        el.style.backgroundImage = `url('/img/redMarker.png')`;
         el.style.backgroundSize = "cover";
         el.style.width = "50px";
         el.style.height = "50px";
         el.style.borderRadius = "50%";
         el.style.cursor = "pointer";
 
-        // Ajoutez le marqueur à la carte
+        // Add marker to the map
         new maptilersdk.Marker({ element: el })
-          .setLngLat([longitude, latitude]) 
+          .setLngLat([longitude, latitude])
           .setPopup(popup)
           .addTo(map);
       }
     });
 
-    // Fonction de nettoyage pour supprimer l'instance de la carte
+    // Cleanup function to remove map instance
     return () => {
       map.remove();
     };
-  }, [coordinates]); // Réexécutez l'effet lorsque les coordonnées changent
+  }, [coordinates]); // Re-run effect when coordinates change
 
   return (
     <div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+    
 
       <div
+      className="rounded-5"
         id="map"
-        style={{ position: "absolute", top: 0, bottom: 0, width: "100%" }}
+        style={{
+          position: "absolute",
+          top: "15%",
+          left: "2%",
+          bottom: "5%",
+          width: "50%",
+          right: "2%",
+        }}
       />
     </div>
   );

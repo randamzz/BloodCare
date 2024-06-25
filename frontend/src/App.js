@@ -22,12 +22,11 @@ import EventMain from "./component/Event/EventMain";
 import BloodList from "./component/Hospital/bloodList";
 import { Navigation } from "./Layout/navigations";
 import NotFound from "./Layout/NotFound";
-import ListBloodHistory from "./component/Hospital/listbloodhistory";
 import BloodTotalsPage from "./component/Hospital/BloodTotalsPage";
+import Main2 from "./component/Event/Main2";
+import Main3 from "./component/Hospital/Main3";
 
 const AppContent = () => {
-
-
   return (
     <>
       <Navigation />
@@ -40,7 +39,7 @@ const AppContent = () => {
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/alerte" element={<Main />} />
         <Route path="/geocode" element={<Geocode />} />
-        <Route path="/event" element={<PlannedEventsList />} />
+        <Route path="/event" element={<Main2 />} />
         <Route path="/Event/events/:eventId" element={<EventDetailsPage />} />
         <Route path="/events" element={<EventMain />} />
         <Route path="/myevents" element={<MyEvents />} />
@@ -49,13 +48,9 @@ const AppContent = () => {
           element={<MyEventDetails />}
         />
         <Route path="/add_events" element={<EventMain />} />
-        <Route path="/hospitals/list_blood" element={<BloodList />} />
+        <Route path="/hospitals/list_blood" element={<Main3 />} />
         <Route path="/hospitals/blood_totals" element={<BloodTotalsPage />} />
         <Route path="*" element={<NotFound />} />
-        <Route
-          path="/hospitals/list_blood_history"
-          element={<ListBloodHistory />}
-        />
         <Route path="/error" element={<NotFound />} />
       </Routes>
     </>

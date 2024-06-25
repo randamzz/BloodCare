@@ -4,6 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./PlannedEventsList.css";
 import Geocode from "../Map/Geocode";
+
 const PlannedEventsList = () => {
   const [events, setEvents] = useState([]);
   const userType = Cookies.get("user_type");
@@ -37,6 +38,12 @@ const PlannedEventsList = () => {
     return date.toLocaleTimeString(undefined, options);
   };
 
+  const futureEvents = events.filter((event) => {
+    const eventDate = new Date(event.date_and_hour);
+    const today = new Date();
+    return eventDate > today;
+  });
+
   if (userType !== "citizen" && userType !== "association") {
     return <Navigate to="/error" />;
   }
@@ -44,13 +51,12 @@ const PlannedEventsList = () => {
   return (
     <div className="events-container">
       <h1 className="events-title">
-        {/* MAP DES EVENMENTS PROCHE <Geocode /> */}
         <span className="black-text">Planned</span>{" "}
-        <span className="dark-red-text">Events!</span>{" "}
+        <span style={{ color: "#cc466a" }}>Events!</span>{" "}
       </h1>
       <div className="events-list">
-        {events.map((event) => (
-          <div key={event.id} className="decoration__data m-4">
+        {futureEvents.map((event) => (
+          <div key={event.id} className="decoration__data">
             <img
               src="https://th.bing.com/th/id/R.8488212d54ffcca478b950faf962e76b?rik=4STiOHBqbhxnJA&pid=ImgRaw&r=0"
               alt=""
@@ -58,17 +64,24 @@ const PlannedEventsList = () => {
             />
             <h3 className="events-title">{event.eventname}</h3>
 
+            <p>
+              Organized by :
+              <p style={{ color: "#cc466a", fontWeight: "bold" }}>
+                {event.association_or_hospital}
+              </p>
+            </p>
             <p className="para">Location: {event.location}</p>
             <p className="para">Date: {formatDate(event.date_and_hour)}</p>
             <p className="para">Time: {formatTime(event.date_and_hour)}</p>
-
-            <Link to={`/Event/events/${event.id}/`} className="button type2">
+            <Link
+              to={`/Event/events/${event.id}/`}
+              className="button type2 rounded-5"
+            >
               Details
             </Link>
           </div>
         ))}
       </div>
-      <div> </div>
     </div>
   );
 };

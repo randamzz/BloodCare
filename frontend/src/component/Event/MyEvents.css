@@ -1,100 +1,84 @@
-.my-events-container {
-  padding-top: 100px;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+.events {
+  padding: 100px 0;
+  color: #333;
+  background-image: url("/public/img/bgstock.png");
+  background-Size: "cover";
+  background-Position: "center";
+  background-Repeat: "no-repeat";
+
 }
 
-.my-events-title {
-  margin: 20px 0;
-  font-weight: 700;
-  font-size: 2em;
-  text-align: center;
-  color: darkred;
-  text-transform: uppercase;
-}
-
-.my-events-black-text {
-  color: black;
-}
-
-.my-events-dark-red-text {
-  color: darkred;
-}
-
-.my-events-form {
-  display: flex; /* Ensure elements align correctly */
-  justify-content: center; /* Center form elements */
-  align-items: center;
-  text-align: center;
-  margin-bottom: 20px;
-  flex-wrap: wrap; /* Prevent overflow by wrapping elements */
-}
-
-.my-events-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.my-events-button {
-  background-color: darkred;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.my-events-loading-text {
-  font-style: italic;
-  color: darkred;
-}
-
-.my-events-error-text {
-  color: darkred;
-  font-weight: bold;
-}
-
-.my-events-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  width: 100%; /* Ensure grid fits within container */
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
-}
-
-.my-events-card {
-  background-color: #f7f7f7;
+.content-wrapper {
   padding: 20px;
+}
+
+.section-heading {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2em;
+  color: darkred;
+}
+
+.project-item {
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.my-events-content {
-  color: #333;
+.event-item {
+  padding: 20px;
 }
 
-.my-events-heading {
+.date {
+  background-color: rgba(0, 132, 139, 0.39);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1.0em;
+}
+
+.date span {
+  font-size: 1.5em;
+}
+
+.h4 {
   font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.my-events-para {
-  margin-bottom: 5px;
+.location {
+  padding: 5px 0;
+  font-size: 18px;
+}
+.dh{
+  padding: 5px 0;
+  font-size: 18px;
 }
 
 .my-events-link {
-  display: inline-block;
+  display: block;
   background-color: darkred;
   color: white;
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 5px;
-  text-decoration: none;
+  text-align: center;
   margin-top: 10px;
+  max-height: 20%;
 }
 
-.my-events-link:hover {
+.my-events-link a {
+  color: white;
+  text-decoration: none;
+}
+
+.my-events-link a:hover {
   color: cornsilk;
   background-color: #900;
+}
+
+.update-button {
+  text-align: center;
+  margin-top: 10px;
 }

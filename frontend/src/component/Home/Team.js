@@ -9,8 +9,8 @@ const Team = () => {
       social: {
         facebook: "#",
         twitter: "#",
-        instagram: "#"
-      }
+        instagram: "#",
+      },
     },
     {
       name: "Bouchouikar Saif",
@@ -19,29 +19,29 @@ const Team = () => {
       social: {
         facebook: "#",
         twitter: "#",
-        instagram: "#"
-      }
+        instagram: "#",
+      },
     },
     {
       name: "El Maazouza Randa",
-      imgSrc: "img/Randa.png",
+      imgSrc: "img/RANDA .png",
       delay: "0.5s",
       social: {
         facebook: "#",
         twitter: "#",
-        instagram: "#"
-      }
+        instagram: "#",
+      },
     },
     {
       name: "Laachir Moussaab",
-      imgSrc: "img/Randa.png",
+      imgSrc: "img/Mousaab.png",
       delay: "0.7s",
       social: {
         facebook: "#",
         twitter: "#",
-        instagram: "#"
-      }
-    }
+        instagram: "#",
+      },
+    },
   ];
 
   return (

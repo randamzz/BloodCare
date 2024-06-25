@@ -7,7 +7,6 @@ import AddBlood from "./addBlood";
 import UpdateBlood from "./updateBlood";
 import { Navigate } from "react-router-dom";
 
-
 const BloodList = () => {
   const [bloodList, setBloodList] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -33,7 +32,6 @@ const BloodList = () => {
     }
   };
 
-  // Appel de fetchBloodList une fois après le rendu initial
   useEffect(() => {
     fetchBloodList();
   }, []);
@@ -47,21 +45,90 @@ const BloodList = () => {
     setShowUpdateModal(false);
     setBloodToUpdate({ id: null, quantity_before: "" });
   };
-    useEffect(() => {
-      const userType = Cookies.get("user_type");
+  useEffect(() => {
+    const userType = Cookies.get("user_type");
 
-      if (userType !== "hospital") {
-        setisHospital(false);
-      } else {
-        fetchBloodList();
-      }
-    }, []);
+    if (userType !== "hospital") {
+      setisHospital(false);
+    } else {
+      fetchBloodList();
+    }
+  }, []);
   if (!isHospital) {
     return <Navigate to="/error" />;
   }
   return (
     <div className="container-fluid">
-      <div className="row align-items-center">
+      <div className="table-responsive mt-3">
+        {showAddModal && (
+          <AddBlood
+            show={showAddModal}
+            onHide={() => setShowAddModal(false)}
+            fetchBloodList={fetchBloodList}
+          />
+        )}
+        {showUpdateModal && (
+          <UpdateBlood
+            show={showUpdateModal}
+            onHide={handleUpdateModalClose}
+            fetchBloodList={fetchBloodList}
+            id={bloodToUpdate.id}
+            quantity_before={bloodToUpdate.quantity_before}
+          />
+        )}
+        <table className="table-custom align-items-center mb-0">
+          <thead>
+            <tr>
+              <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                Blood Type
+              </th>
+              <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                Total Quantity (ml)
+              </th>
+              <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {bloodList.map((blood) => (
+              <tr key={blood.blood_type}>
+                <td>
+                  <div className="d-flex px-2 py-1">
+                    <div className="d-flex flex-column justify-content-center">
+                      <h6 className="mb-0 text-sm">{blood.blood_type}</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p className="text-xs font-weight-bold mb-0">
+                    {blood.quantity_ml}
+                  </p>
+                </td>
+                <td className="align-middle text-center text-sm">
+                  <button
+                  className="btn rounded-5"
+                    onClick={() => handleUpdateModalOpen(blood)}
+                    style={{ backgroundColor: "#54a9b9", color: "white" }}
+                  >
+                    Update
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <div style={{ textAlign: "right", marginRight: "7%" }}>
+        {/* <button
+          className="btn rounded-5 btn-lg"
+          style={{ backgroundColor: "#cc466a", float: "right" }}
+          onClick={() => setShowAddModal(true)}
+        >
+          +
+        </button> */}
+      </div>
+
+      {/* <div className="row align-items-center">
         <div className="col-md-9">
           <div className="container mt-5">
             <h4 className="text-center mb-4">List of blood types</h4>
@@ -104,9 +171,7 @@ const BloodList = () => {
                       <td>{blood.blood_type}</td>
                       <td>{blood.quantity_ml}</td>
                       <td>
-                        <Button
-                          onClick={() => handleUpdateModalOpen(blood)}
-                        >
+                        <Button onClick={() => handleUpdateModalOpen(blood)}>
                           Update
                         </Button>
                       </td>
@@ -117,7 +182,7 @@ const BloodList = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

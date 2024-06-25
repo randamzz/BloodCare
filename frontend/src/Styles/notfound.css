@@ -23,7 +23,7 @@
                 {display:inline-block;
                     width:120px;
                     height:120px;
-                   background-image: url(C:\Users\hp\Downloads\DDS3\DDS3\DDS3\frontend\public\img\notfound.png); 
+                   background-image: url("/public/img/notfound.png"); 
                    background-size:cover;
                     -webkit-transform:scale(1.4);
                     -ms-transform:scale(1.4);

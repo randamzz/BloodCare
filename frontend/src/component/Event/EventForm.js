@@ -91,7 +91,10 @@ function EventForm({ onEventSubmitted }) {
               data-wow-duration="1s"
               data-wow-delay="0.5s"
             >
+              <br />
               <h4>
+                <br />
+                <br />
                 Create Event <em>Now</em>
               </h4>
               <div className="line-dec"></div>
@@ -111,6 +114,7 @@ function EventForm({ onEventSubmitted }) {
                 backgroundColor: "#fff",
                 borderRadius: "23px",
                 textAlign: "center",
+                marginTop: "1%",
               }}
             >
               <div className="row">
@@ -212,7 +216,10 @@ function EventForm({ onEventSubmitted }) {
                         />
                       </div>
                     </div>
-                    <button type="submit" className="btn ">
+                    <button
+                      type="submit"
+                      className="btn btn-primary text-white "
+                    >
                       Create Event
                     </button>
                   </div>

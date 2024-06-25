@@ -20,21 +20,22 @@ def blood_totals(request):
     )
     return JsonResponse(list(blood_totals), safe=False)
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_blood_stock(request):
     serializer = BloodSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save(hospital=request.user)
+        blood_stock = serializer.save(hospital=request.user)
+        BloodHistory.objects.create(
+            blood=blood_stock,
+            action='add',
+            quantity_change=blood_stock.quantity_ml,
+            user=request.user
+        )
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def list_blood_stock(request):
-    blood_stock_objects = Blood.objects.filter(hospital=request.user)
-    serializer = BloodSerializer(blood_stock_objects, many=True)
-    return Response(serializer.data)
 @api_view(['PATCH'])
 @permission_classes([IsAuthenticated])
 def update_blood_stock(request, pk):
@@ -52,18 +53,58 @@ def update_blood_stock(request, pk):
     except ValueError:
         return Response({"error": "quantity_change must be an integer"}, status=status.HTTP_400_BAD_REQUEST)
     
+    original_quantity = blood_stock.quantity_ml
     blood_stock.quantity_ml += quantity_change
+
     if blood_stock.quantity_ml < 0:
         return Response({"error": "Quantity cannot be negative"}, status=status.HTTP_400_BAD_REQUEST)
 
     blood_stock.save()
+
+    # Determine action (increase or decrease)
+    if quantity_change > 0:
+        action = 'increase'
+    elif quantity_change < 0:
+        action = 'decrease'
+    else:
+        action = 'unknown'
+
+    # Save history
+    BloodHistory.objects.create(
+        blood=blood_stock,
+        action=action,
+        quantity_change=quantity_change,
+        user=request.user
+    )
+
     serializer = BloodSerializer(blood_stock)
     return Response(serializer.data)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def list_blood_history(request):
-    user = request.user
-    history = BloodHistory.objects.filter(user=user).order_by('-timestamp')
-    serializer = BloodHistorySerializer(history, many=True)
+    history_objects = BloodHistory.objects.filter(user=request.user).order_by('-timestamp')
+    serializer = BloodHistorySerializer(history_objects, many=True)
     return Response(serializer.data)
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def clear_blood_history(request):
+    try:
+        # Assuming you want to clear all entries related to the logged-in hospital user
+        BloodHistory.objects.filter(user=request.user).delete()
+        return Response({"message": "Blood history cleared successfully"}, status=status.HTTP_204_NO_CONTENT)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def list_blood_stock(request):
+    blood_stock_objects = Blood.objects.filter(hospital=request.user)
+    serializer = BloodSerializer(blood_stock_objects, many=True)
+    return Response(serializer.data)
+
+
+
+
+

@@ -2530,7 +2530,7 @@
   
   .blockquote {
     padding: 1.25rem;
-    border: 1px solid #CED4DA;
+    border: 1px solid #cc466a;
   }
   
   address p {
@@ -2792,37 +2792,37 @@
   
   @media (min-width: 576px) {
     .border-right-sm {
-      border-right: 1px solid #CED4DA;
+      border-right: 1px solid #cc466a;
     }
   }
   
   @media (min-width: 768px) {
     .border-right-md {
-      border-right: 1px solid #CED4DA;
+      border-right: 1px solid #cc466a;
     }
   }
   
   @media (min-width: 992px) {
     .border-right-lg {
-      border-right: 1px solid #CED4DA;
+      border-right: 1px solid #cc466a;
     }
   }
   
   @media (min-width: 576px) {
     .border-left-sm {
-      border-left: 1px solid #CED4DA;
+      border-left: 1px solid #cc466a;
     }
   }
   
   @media (min-width: 768px) {
     .border-left-md {
-      border-left: 1px solid #CED4DA;
+      border-left: 1px solid #cc466a;
     }
   }
   
   @media (min-width: 992px) {
     .border-left-lg {
-      border-left: 1px solid #CED4DA;
+      border-left: 1px solid #cc466a;
     }
   }
   
@@ -3139,7 +3139,7 @@
   
   .accordion.accordion-bordered .card {
     margin: 0 2rem;
-    border-top: 1px solid #CED4DA;
+    border-top: 1px solid #cc466a;
     box-shadow: none;
     border-radius: 0;
     border-left: 0;
@@ -4051,11 +4051,11 @@ margin-top: 5%;
   }
   
   .form-check .form-check-label input[type="checkbox"]:disabled + .input-helper:before {
-    border-color: #CED4DA;
+    border-color: #cc466a;
   }
   
   .form-check .form-check-label input[type="checkbox"]:disabled:checked + .input-helper:after {
-    background: #CED4DA;
+    background: #cc466a;
     color: #ffffff;
   }
   
@@ -4128,11 +4128,11 @@ margin-top: 5%;
   }
   
   .form-check .form-check-label input[type="radio"]:disabled + .input-helper:before {
-    border-color: #CED4DA;
+    border-color: #cc466a;
   }
   
   .form-check .form-check-label input[type="radio"]:disabled:checked + .input-helper:before {
-    background: #CED4DA;
+    background: #cc466a;
   }
   
   .form-check .form-check-label input[type="radio"]:disabled:checked + .input-helper:after {
@@ -4264,7 +4264,7 @@ margin-top: 5%;
   
   .input-group-append .input-group-text,
   .input-group-prepend .input-group-text {
-    border-color: #CED4DA;
+    border-color: #cc466a;
     padding: 0.875rem 0.75rem;
     color: #c9c8c8;
   }
@@ -4273,7 +4273,7 @@ margin-top: 5%;
   .jsgrid .jsgrid-table .jsgrid-filter-row select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead,
   .tt-query,
   .tt-hint {
-    border: 1px solid #CED4DA;
+    border: 1px solid #cc466a;
     font-weight: 400;
     font-size: 0.875rem;
     border-radius: 4px;
@@ -4285,7 +4285,7 @@ margin-top: 5%;
   select.tt-hint {
     padding: .4375rem .75rem;
     border: 0;
-    outline: 1px solid #CED4DA;
+    outline: 1px solid #cc466a;
     color: #c9c8c8;
   }
   
@@ -4293,7 +4293,7 @@ margin-top: 5%;
   .jsgrid .jsgrid-table .jsgrid-filter-row select:focus, .select2-container--default select.select2-selection--single:focus, .select2-container--default .select2-selection--single select.select2-search__field:focus, select.typeahead:focus,
   select.tt-query:focus,
   select.tt-hint:focus {
-    outline: 1px solid #CED4DA;
+    outline: 1px solid #cc466a;
   }
   
   select.form-control.border-primary, select.border-primary.asColorPicker-input, .dataTables_wrapper select.border-primary,

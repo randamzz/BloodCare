@@ -10,6 +10,7 @@ const MyEventDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isAssociation, setIsAssociation] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const userType = Cookies.get("user_type");
@@ -47,6 +48,10 @@ const MyEventDetails = () => {
     return <p className="myevent-error-text">{error}</p>;
   }
 
+  const filteredParticipants = event.participant_emails.filter((email) =>
+    email.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="myevent-details-wrapper">
       <div className="box">
@@ -54,9 +59,21 @@ const MyEventDetails = () => {
         <p className="myevent-participants-count">
           Number of Participants: {event.participants_count}
         </p>
-        <p className="myevent-participants-heading">Participants Emails:</p>
-        <ul className="myevent-participant-list">
-          {event.participant_emails.map((email, index) => (
+        <div className="form-group">
+          <input
+            className="form-control  text-center rounded-5 "
+            placeholder="Search participants"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{ padding: "10px", margin: "0 auto", width: "70%" }}
+          />
+        </div>
+        <ul
+          className="myevent-participant-list overflow-auto"
+          style={{ maxHeight: "300px" }}
+        >
+          {filteredParticipants.map((email, index) => (
             <li key={index} className="myevent-participant-email">
               <span>{index + 1}</span> {email}
             </li>
